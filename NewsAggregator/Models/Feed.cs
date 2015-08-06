@@ -20,10 +20,4 @@ namespace NewsAggregator.Models
 		public virtual ICollection<Resource> Resources { get; set; }
 	}
 
-	public class AnotherOneTable
-	{
-		[Key]
-		public Guid Id { get; set; }
-		public string NAme { get; set; }
-	}
 }
