@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace NewsAggregator.Models 
@@ -16,6 +17,6 @@ namespace NewsAggregator.Models
 
 		public DateTime LastUpdatedDate { get; set; }
 
-		public virtual Feed Feed { get; set; }
+		public virtual ICollection<Feed> Feeds { get; set; }
 	}
 }

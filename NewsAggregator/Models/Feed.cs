@@ -17,7 +17,7 @@ namespace NewsAggregator.Models
 
 		public string AuthorName { get; set; }
 
-		public virtual ICollection<Resource> Resources { get; set; }
+		public virtual Resource Resource { get; set; }
 	}
 
 }

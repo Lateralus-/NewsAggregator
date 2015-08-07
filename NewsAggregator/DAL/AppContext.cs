@@ -9,14 +9,7 @@ namespace NewsAggregator.DAL
 		public DbSet<Resource> Resources { get; set; }
 		public DbSet<Feed> Feeds { get; set; }
 
-		public AppContext() : base("AppContext")
-		{
-		}
-
-		public AppContext(string connString)
-			: base(connString)
-		{
-		}
+		public AppContext() : base("AppContext") {}
 
 		protected override void OnModelCreating(DbModelBuilder modelBuilder)
 		{
