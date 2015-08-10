@@ -113,64 +113,66 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DAL\Repository\GenericDataRepository.cs" />
+    <Compile Include="DAL\Repository\IGenericDataRepository.cs" />
     <Compile Include="DAL\Migrations\Configuration.cs" />
-    <Compile Include="DAL\AppContext.cs" />
-    <Compile Include="CLient\App_Start\BundleConfig.cs" />
-    <Compile Include="CLient\App_Start\FilterConfig.cs" />
-    <Compile Include="CLient\App_Start\RouteConfig.cs" />
-    <Compile Include="CLient\Controllers\HomeController.cs" />
-    <Compile Include="CLient\Models\Feed.cs" />
-    <Compile Include="CLient\Global.asax.cs">
+    <Compile Include="DAL\EntityFramework\AppContext.cs" />
+    <Compile Include="Client\App_Start\BundleConfig.cs" />
+    <Compile Include="Client\App_Start\FilterConfig.cs" />
+    <Compile Include="Client\App_Start\RouteConfig.cs" />
+    <Compile Include="Client\Controllers\HomeController.cs" />
+    <Compile Include="Client\Models\Feed.cs" />
+    <Compile Include="Client\Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CLient\Models\Resource.cs" />
+    <Compile Include="Client\Models\Resource.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CLient\Content\bootstrap.css" />
-    <Content Include="CLient\Content\bootstrap.min.css" />
-    <Content Include="CLient\favicon.ico" />
-    <Content Include="CLient\fonts\glyphicons-halflings-regular.svg" />
-    <Content Include="CLient\Global.asax" />
-    <Content Include="CLient\Content\Site.css" />
-    <Content Include="CLient\Scripts\bootstrap.js" />
-    <Content Include="CLient\Scripts\bootstrap.min.js" />
-    <None Include="CLient\Scripts\jquery-1.10.2.intellisense.js" />
-    <Content Include="CLient\Scripts\jquery-1.10.2.js" />
-    <Content Include="CLient\Scripts\jquery-1.10.2.min.js" />
-    <Content Include="CLient\Scripts\modernizr-2.6.2.js" />
-    <Content Include="CLient\Scripts\respond.js" />
-    <Content Include="CLient\Scripts\respond.min.js" />
-    <Content Include="CLient\Scripts\_references.js" />
-    <Content Include="CLient\Web.config">
+    <Content Include="Client\Content\bootstrap.css" />
+    <Content Include="Client\Content\bootstrap.min.css" />
+    <Content Include="Client\favicon.ico" />
+    <Content Include="Client\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Client\Global.asax" />
+    <Content Include="Client\Content\Site.css" />
+    <Content Include="Client\Scripts\bootstrap.js" />
+    <Content Include="Client\Scripts\bootstrap.min.js" />
+    <None Include="Client\Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Client\Scripts\jquery-1.10.2.js" />
+    <Content Include="Client\Scripts\jquery-1.10.2.min.js" />
+    <Content Include="Client\Scripts\modernizr-2.6.2.js" />
+    <Content Include="Client\Scripts\respond.js" />
+    <Content Include="Client\Scripts\respond.min.js" />
+    <Content Include="Client\Scripts\_references.js" />
+    <Content Include="Client\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="CLient\Web.Debug.config">
+    <Content Include="Client\Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="CLient\Web.Release.config">
+    <Content Include="Client\Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
-    <Content Include="CLient\Views\Web.config" />
-    <Content Include="CLient\Views\_ViewStart.cshtml" />
-    <Content Include="CLient\Views\Shared\Error.cshtml" />
-    <Content Include="CLient\Views\Shared\_Layout.cshtml" />
-    <Content Include="CLient\Views\Home\About.cshtml" />
-    <Content Include="CLient\Views\Home\Contact.cshtml" />
-    <Content Include="CLient\Views\Home\Index.cshtml" />
-    <Content Include="CLient\Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Client\Views\Web.config" />
+    <Content Include="Client\Views\_ViewStart.cshtml" />
+    <Content Include="Client\Views\Shared\Error.cshtml" />
+    <Content Include="Client\Views\Shared\_Layout.cshtml" />
+    <Content Include="Client\Views\Home\About.cshtml" />
+    <Content Include="Client\Views\Home\Contact.cshtml" />
+    <Content Include="Client\Views\Home\Index.cshtml" />
+    <Content Include="Client\Scripts\jquery-1.10.2.min.map" />
     <Content Include="skor_cd_newsaggregator.cd" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="CLient\fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="CLient\fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="CLient\fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="CLient\packages.config" />
-    <None Include="CLient\Project_Readme.html" />
+    <Content Include="Client\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="Client\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="Client\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Client\packages.config" />
+    <None Include="Client\Project_Readme.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="BL\" />
-    <Folder Include="CLient\App_Data\" />
+    <Folder Include="Client\App_Data\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

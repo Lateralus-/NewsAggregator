@@ -2,9 +2,9 @@
 using System.Data.Entity.ModelConfiguration.Conventions;
 using NewsAggregator.Client.Models;
 
-namespace NewsAggregator.DAL
+namespace NewsAggregator.DAL.EntityFramework
 {
-	public class AppContext : DbContext
+	public partial class AppContext : DbContext
 	{
 		public DbSet<Resource> Resources { get; set; }
 		public DbSet<Feed> Feeds { get; set; }
