@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace NewsAggregator.Models 
+namespace NewsAggregator.Client.Models 
 {
 	public class Resource
 	{
