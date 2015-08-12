@@ -1,13 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using NewsAggregator.DAL;
+using NewsAggregator.DAL.Repository;
 
 namespace NewsAggregator.Client.Models 
 {
-	public class Resource
+	public class Resource : IEntity<Guid>
 	{
 		[Key]
-		public Guid ResourceId { get; set; }
+		public Guid Id { get; set; }
 
 		public string Name { get; set; }
 

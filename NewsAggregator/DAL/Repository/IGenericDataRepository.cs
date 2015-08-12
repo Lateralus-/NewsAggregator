@@ -1,16 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Linq.Expressions;
 
 namespace NewsAggregator.DAL.Repository
 {
-	public interface IGenericDataRepository<T> where T : class
+	public interface IGenericDataRepository<TEntity, in TKey> : IDisposable 
+		where TEntity : class, IEntity<Guid>
+		where TKey : IComparable
 	{
-		IList<T> GetAll(params Expression<Func<T, object>>[] navigationProperties);
-		IList<T> GetList(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
-		T GetSingle(Func<T, bool> where, params Expression<Func<T, object>>[] navigationProperties);
-		void Add(params T[] items);
-		void Update(params T[] items);
-		void Remove(params T[] items);
+		IQueryable<TEntity> GetAll(out Exception exception);
+		IQueryable<TEntity> FindBy(Expression<Func<TEntity, bool>> predicate, out Exception exception);
+		TEntity Get(TKey key, out Exception exception);
+		bool Add(TEntity entity, out Exception exception);
+		bool Update(TEntity entity, out Exception exception);
+		void Delete(TEntity entity, out Exception exception);
 	}
 }
