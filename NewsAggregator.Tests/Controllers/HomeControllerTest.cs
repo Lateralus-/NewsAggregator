@@ -5,7 +5,8 @@ using System.Text;
 using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NewsAggregator;
-using NewsAggregator.Controllers;
+using NewsAggregator.Client.Controllers;
+
 
 namespace NewsAggregator.Tests.Controllers
 {

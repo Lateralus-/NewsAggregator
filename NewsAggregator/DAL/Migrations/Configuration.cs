@@ -1,15 +1,15 @@
-namespace NewsAggregator.Migrations
+namespace NewsAggregator.DAL.Migrations
 {
 	using System.Data.Entity.Migrations;
 
-	internal sealed class Configuration : DbMigrationsConfiguration<NewsAggregator.DAL.AppContext>
+	internal sealed class Configuration : DbMigrationsConfiguration<NewsAggregator.DAL.EntityFramework.AppContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = true;
         }
 
-        protected override void Seed(NewsAggregator.DAL.AppContext context)
+		protected override void Seed(NewsAggregator.DAL.EntityFramework.AppContext context)
         {
             //  This method will be called after migrating to the latest version.
 
