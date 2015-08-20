@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using HtmlAgilityPack;
+using NewsAggr.DAL;
+using NewsAggr.Models;
+using System.Text.RegularExpressions;
+using NewsAggr.DAL.Repository;
 
 namespace NewsAggr.Controllers
 {
@@ -28,13 +32,31 @@ namespace NewsAggr.Controllers
             {
                 doc = webGet.Load(tempUrl);
             }
-            HtmlNode bodyNode = null;
-            if (doc.DocumentNode != null)
-            {
-                bodyNode = doc.DocumentNode.SelectSingleNode("//body");
-            }
+            var headers = doc.DocumentNode.Descendants("div").Where(d => d.Attributes.Contains("class") && d.Attributes["class"].Value.Contains("text"));
+                       
+            Resource resource = new Resource();
 
-            ViewBag.Message = bodyNode != null? bodyNode.ChildNodes.Count.ToString(): "Seems not to be working";
+            resource.Feeds = new List<Feed>();
+            NewsAggregatorRepository<Feed> FeedRep = new NewsAggregatorRepository<Feed>();
+            resource.Name = "057 Karkiv news";
+
+            Exception ex = null;
+            foreach (var header in headers)
+            {
+                Feed feed = new Feed();
+
+                
+                string title = Regex.Replace(header.InnerText, @"\t|\n|\r", "");
+                feed.Title = title;
+                feed.Date = DateTime.Now;
+
+                resource.Feeds.Add(feed);
+                FeedRep.Add(feed, out ex);
+            }
+            resource.LastUpdatedDate = DateTime.Now;
+
+           
+            ViewBag.Message = resource.Feeds.Count;
             return View("ParseResults");
         }
 
