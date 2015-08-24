@@ -19,6 +19,10 @@ namespace NewsAggr.Models
 
 		public virtual Resource Resource { get; set; }
 
+        public Feed()
+        {
+            this.Id = Guid.NewGuid();
+        }
 	}
 
 }

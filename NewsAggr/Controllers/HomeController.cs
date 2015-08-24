@@ -1,13 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using HtmlAgilityPack;
-using NewsAggr.DAL;
 using NewsAggr.Models;
-using System.Text.RegularExpressions;
 using NewsAggr.DAL.Repository;
+using NewsAggr.HtmlParser;
 
 namespace NewsAggr.Controllers
 {
@@ -20,43 +15,23 @@ namespace NewsAggr.Controllers
         [HttpPost]
         public ActionResult Parse(string url)
         {
-            var webGet = new HtmlWeb();
-            HtmlDocument doc = new HtmlDocument();
-            var tempUrl = "http://minfin.com.ua/";
-            //ViewBag.Message = url;
-            try 
+            Exception exception = null;
+            O57Parser parser = new O57Parser();
+
+            Resource o57Resource = new Resource();
+            
+            o57Resource.Feeds = parser.GetAllFeeds(out exception);
+
+            NewsAggregatorRepository<Feed> feedRepository = new NewsAggregatorRepository<Feed>();
+            NewsAggregatorRepository<Resource> resourceRepository = new NewsAggregatorRepository<Resource>();
+
+            foreach (Feed feed in o57Resource.Feeds)
             {
-                doc = webGet.Load(url);
+                feedRepository.Add(feed, out exception);
             }
-            catch (Exception e)
-            {
-                doc = webGet.Load(tempUrl);
-            }
-            var headers = doc.DocumentNode.Descendants("div").Where(d => d.Attributes.Contains("class") && d.Attributes["class"].Value.Contains("text"));
-                       
-            Resource resource = new Resource();
+            resourceRepository.Add(o57Resource, out exception);
 
-            resource.Feeds = new List<Feed>();
-            NewsAggregatorRepository<Feed> FeedRep = new NewsAggregatorRepository<Feed>();
-            resource.Name = "057 Karkiv news";
-
-            Exception ex = null;
-            foreach (var header in headers)
-            {
-                Feed feed = new Feed();
-
-                
-                string title = Regex.Replace(header.InnerText, @"\t|\n|\r", "");
-                feed.Title = title;
-                feed.Date = DateTime.Now;
-
-                resource.Feeds.Add(feed);
-                FeedRep.Add(feed, out ex);
-            }
-            resource.LastUpdatedDate = DateTime.Now;
-
-           
-            ViewBag.Message = resource.Feeds.Count;
+            //ViewBag.Message = resource.Feeds.Count;
             return View("ParseResults");
         }
 

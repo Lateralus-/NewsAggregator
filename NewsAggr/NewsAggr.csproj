@@ -138,6 +138,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="HtmlParser\IHtmlParser.cs" />
+    <Compile Include="HtmlParser\O57Parser.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Feed.cs" />
     <Compile Include="Models\Resource.cs" />

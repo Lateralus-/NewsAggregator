@@ -20,5 +20,10 @@ namespace NewsAggr.Models
 		public DateTime LastUpdatedDate { get; set; }
 
 		public virtual ICollection<Feed> Feeds { get; set; }
+
+        public Resource()
+        {
+            this.Id = Guid.NewGuid();
+        }
 	}
 }
